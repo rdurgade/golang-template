@@ -49,7 +49,7 @@ $ cd go-rest-project-template
 $ make run
 ```
 Then open http://localhost:8080/ in web browser ( Browser will automatically get routed to swagger documentation in 5 seconds )
-We can also test version endpoint using
+We can also test version endpoint using following curl command
 ```sh
 $ curl -X GET "http://localhost:8080/api/version"
 ```
