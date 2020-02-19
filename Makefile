@@ -1,15 +1,15 @@
 
 ## Please feel free to modify following make variables
-# BASEPATH defines prefix for all API paths. Can be changed to somthing like /mysvc/api
+# BASEPATH: define prefix for all API paths. Can be changed to somthing like /mysvc/api
 BASEPATH = "/api" #Please do not end with /
 
-# SWAGGERPATH defines prefix for swagger documentation. Can be changed to somthing like /mysvc/swagger
+# SWAGGERPATH: define prefix for swagger documentation. Can be changed to somthing like /mysvc/swagger
 SWAGGERPATH = "/swagger" #Please do not end with /
 
-# PORT define the TCP port for this application to listen on
+# PORT: define the TCP port for this application to listen on
 PORT = "8080"
 
-# VERSION define the version of this service
+# VERSION: define the version of this service
 VERSION := "v0.0.1"
 
 ##
