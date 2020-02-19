@@ -65,6 +65,7 @@ $ code .  # This will open . ( i.e. current directory ) in VSCode application
 $ cd go-rest-project-template
 $ make builddocker #complie go code with GOARCH=amd64 and GOOS=linux and create docker image
 $ make buildgo #build go binary in directory build/out
+$ make help #shows help
 ```
 
 ## Reference
