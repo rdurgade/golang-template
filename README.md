@@ -43,7 +43,7 @@ $ cd $GOPATH/src
 $ git clone https://github.com/opsinfra/go-rest-project-template.git
 ```
 
-8. Check if the project runs
+8. Run this project
 ```sh
 $ cd go-rest-project-template
 $ make run
