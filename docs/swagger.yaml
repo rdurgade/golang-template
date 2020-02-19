@@ -1,0 +1,34 @@
+definitions:
+  model.Version:
+    properties:
+      build:
+        example: e669585-20200218215640
+        format: string
+        type: string
+      version:
+        example: v0.0.1
+        format: string
+        type: string
+    type: object
+info:
+  contact: {}
+  description: This is a go-rest-project-template API server.
+  license: {}
+  title: API Docs
+paths:
+  /version:
+    get:
+      consumes:
+      - application/json
+      description: Ge Version Information
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Version'
+      summary: version
+      tags:
+      - version
+swagger: "2.0"

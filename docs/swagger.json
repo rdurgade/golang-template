@@ -1,0 +1,51 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a go-rest-project-template API server.",
+        "title": "API Docs",
+        "contact": {},
+        "license": {}
+    },
+    "paths": {
+        "/version": {
+            "get": {
+                "description": "Ge Version Information",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "version"
+                ],
+                "summary": "version",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Version"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.Version": {
+            "type": "object",
+            "properties": {
+                "build": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "e669585-20200218215640"
+                },
+                "version": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "v0.0.1"
+                }
+            }
+        }
+    }
+}
