@@ -56,7 +56,7 @@ buildgo: clean swag
 
 buildlinuxbin: clean swag
 	@echo "[ > ] Building go code"
-	@set -x; go build $(LDFLAGS) GOOS=linux GOARCH=amd64 -o build/out/${PROJECTNAME} main.go
+	@set -x; GOOS=linux GOARCH=amd64  go build $(LDFLAGS) -o build/out/${PROJECTNAME} main.go
 	@set -x; ls -al build/out/${PROJECTNAME};
 
 ## builddocker: Builds docker images
