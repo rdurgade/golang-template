@@ -35,7 +35,7 @@ export PATH=\$PATH:\$GOBIN
 EOF
 mkdir -p ~/Documents/projects/src
 ```
-6. Close terminal and open a new terminal so that the bew bash profile is in effect
+6. Close terminal and open a new terminal so that the new bash profile is in effect
 
 7. Clone this project in $GOPATH/src directory
 ```sh
