@@ -9,9 +9,11 @@ SWAGGERPATH = "/swagger" #Please do not end with /
 # PORT define the TCP port for this application to listen on
 PORT = "8080"
 
+# VERSION define the version of this service
+VERSION := "v0.0.1"
+
 ##
 # Please do not modify following make variables
-VERSION := $(shell git describe --tags)
 BUILD := $(shell git rev-parse --short HEAD)-$(shell date +%Y%m%d%H%M%S)
 PROJECTNAME := $(shell basename "$(PWD)")
 MAKE := $(shell which make)
@@ -64,7 +66,7 @@ builddocker: buildlinuxbin
 	@echo "[ > ] Building docker image"
 	@sync;set -x;cp build/out/${PROJECTNAME} build/docker/app/${PROJECTNAME}
 	@set -x; ls -al build/docker/app/${PROJECTNAME}
-	@sync;set -x; cd build/docker; docker build -t ${PROJECTNAME}.$(VERSION) --build-arg BINNAME=${PROJECTNAME} .;
+	@sync;set -x; cd build/docker; docker build -t ${PROJECTNAME}:$(VERSION)-${BUILD} --build-arg BINNAME=${PROJECTNAME} .;
 	@$(MAKE) clean
 
 :
