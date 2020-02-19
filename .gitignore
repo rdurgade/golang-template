@@ -1,0 +1,7 @@
+#Ignore build output
+build/out/*
+!build/out/.gitkeep
+
+#Ignore docker build app
+build/docker/app/*
+!build/docker/app/.gitkeep
