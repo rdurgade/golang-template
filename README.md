@@ -26,7 +26,7 @@ Following instructions are tested on MacOS 10.13.6 High Sierra
 $ cp ~/.bash_profile ~/.bash_profile.bak.$(date +%Y%m%d%H%M%S)
 $ cat >>~/.bash_profile<<EOF
 # Add Visual Studio Code (code) to path
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # Add GOLANG environment variables
 export GOPATH=~/Documents/projects
