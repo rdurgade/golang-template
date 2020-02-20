@@ -22,7 +22,7 @@ LDFLAGS=-ldflags "-X=main.Version=$(VERSION) -X=main.Build=$(BUILD) -X=main.Base
 
 prechecks:
 	@echo "[ > ] Checking if go is installed"
-	@[ `go1 version | grep version | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang is installed"; } || { echo "[ FAILED ] Golang is not installed. Refer to installation instructions here -> https://golang.org/dl/ "; }
+	@[ `go version | grep version | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang is installed"; } || { echo "[ FAILED ] Golang is not installed. Refer to installation instructions here -> https://golang.org/dl/ "; }
 
 
 dep:
