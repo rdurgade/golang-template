@@ -28,7 +28,7 @@ $ cat >>~/.bash_profile<<EOF
 # Add Visual Studio Code (code) to path
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-$ Add GOLANG environment variables
+# Add GOLANG environment variables
 export GOPATH=~/Documents/projects
 export GOBIN=\${GOPATH}/bin
 export PATH=\$PATH:\$GOBIN
