@@ -4,7 +4,7 @@
 
 
 This is a sample REST API service created using go, gin and swag.
-The Makefile has a lot of useful targets to quickly run/build this project.
+The Makefile has many useful targets to quickly run/build this project.
 Goal is to create a reusable code template for golang based REST API projects.
 
 ## Contents
