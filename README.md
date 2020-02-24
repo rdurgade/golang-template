@@ -73,7 +73,7 @@ $ make help #shows help
 ```
 
 ## How to use this template for a new project
-- #### Prerequisite: Setup completed as documented in section "Getting started"(#getting-started)
+- *Prerequisite*: Setup completed as documented in section [Getting started](#getting-started)
 
 1. Create a new project in github
 ```sh
