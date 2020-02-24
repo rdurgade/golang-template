@@ -32,7 +32,7 @@ prechecks:
 	@[ `go version | grep version | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang is installed"; } || { echo "[ FAILED ] Golang is not installed. Refer to installation instructions here -> https://golang.org/dl/ "; }
 
 
-## dep: Cache imported packages in vendor directory
+## make dep: Cache imported packages in vendor directory
 dep:
 	@echo "[ > ] Checking if dep is installed"
 	@[ `$$GOBIN/dep version | grep platform | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang dep is installed"; } || { echo "[ FAILED ] Golang dep is not installed"; echo "[ TRY ] Attempting to install Golang dep tool"; set -x; go get -v -u  github.com/golang/dep/cmd/dep;  set +x;sync; [ `$$GOBIN/dep version | grep platform | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang dep is installed"; }; }
@@ -46,7 +46,7 @@ swag:
 	@echo "[ > ] Updating swagger docs"
 	@$$GOBIN/swag init
 
-## run: Runs this project locally
+## make run: Runs this project locally
 run: swag
 	@echo "[ > ] Starting application"
 	@set -x; go run $(LDFLAGS) main.go
@@ -58,7 +58,7 @@ clean:
 	@sync;[ -f  build/docker/app/${PROJECTNAME}  ] && { rm -f build/docker/app/${PROJECTNAME}; echo "[ INFO ] DONE cleaning build/docker/app"; } || { echo "[ INFO ] DONE cleaning build/docker/app";}
 
 
-## buildgo: Builds go image
+## make buildgo: Builds go image
 buildgo: clean swag
 	@echo "[ > ] Building go code"
 	@set -x; go build $(LDFLAGS) -o build/out/${PROJECTNAME} main.go
@@ -69,7 +69,7 @@ buildlinuxbin: clean swag
 	@set -x; GOOS=linux GOARCH=amd64  go build $(LDFLAGS) -o build/out/${PROJECTNAME} main.go
 	@set -x; ls -al build/out/${PROJECTNAME};
 
-## builddocker: Builds docker images
+## make builddocker: Builds docker images
 builddocker: buildlinuxbin
 	@echo "[ > ] Building docker image"
 	@sync;set -x;cp build/out/${PROJECTNAME} build/docker/app/${PROJECTNAME}
