@@ -105,7 +105,14 @@ Example:
     $ sed -i '' "s/go-rest-project-template/${PWD##*/}/g" main.go  # On Linux, this line would be sed -i main.go "s/go-rest-project-template/${PWD##*/}/g"
 ```
 
-5. Important note
+5. Now the application should start
+```sh
+Example:
+    $ cd $GOPATH/src/mysvc
+    $ make run
+```
+
+6. Important note
 - Most likely, as we build project, more go packages will be imported. Whenever that happens, we need to run **make dep** before *make run* so that those imported packages can be cached in vendor folder.  
  
 
