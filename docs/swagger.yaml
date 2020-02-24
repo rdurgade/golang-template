@@ -5,6 +5,10 @@ definitions:
         example: e669585-20200218215640
         format: string
         type: string
+      servicename:
+        example: mysvc
+        format: string
+        type: string
       version:
         example: v0.0.1
         format: string

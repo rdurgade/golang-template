@@ -10,6 +10,9 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
+// ServiceName is changed during build
+var ServiceName = "undefined"
+
 // Version is changed during build
 var Version = "undefined"
 
@@ -36,7 +39,7 @@ func setupRoutes(r *gin.Engine) {
 	c := controller.NewController()
 
 	// Initialize Version abd Build variables of controller
-	c.SetBldVer(Version, Build)
+	c.SetBldVer(Version, Build, ServiceName)
 
 	v1 := r.Group(BasePath)
 	{

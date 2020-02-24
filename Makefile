@@ -12,13 +12,16 @@ PORT = "8080"
 # VERSION: define the version of this service
 VERSION := "v0.0.1"
 
+# SERVICENAME: Name for this REST API service. It will appear in version endpoint
+SERVICENAME := $(shell basename "$(PWD)")
+
 ##
 # Please do not modify following make variables
 BUILD := $(shell git rev-parse --short HEAD)-$(shell date +%Y%m%d%H%M%S)
 PROJECTNAME := $(shell basename "$(PWD)")
 MAKE := $(shell which make)
 
-LDFLAGS=-ldflags "-X=main.Version=$(VERSION) -X=main.Build=$(BUILD) -X=main.BasePath=$(BASEPATH) -X=main.Port=$(PORT) -X=main.SwaggerPath=$(SWAGGERPATH)"
+LDFLAGS=-ldflags "-X=main.Version=$(VERSION) -X=main.Build=$(BUILD) -X=main.BasePath=$(BASEPATH) -X=main.Port=$(PORT) -X=main.ServiceName=$(SERVICENAME) -X=main.SwaggerPath=$(SWAGGERPATH)"
 
 prechecks:
 	@echo "[ > ] Checking if go is installed"

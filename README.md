@@ -71,6 +71,46 @@ $ make buildgo #build go binary in directory build/out
 $ make help #shows help
 ```
 
+## How to use this template for a new project
+
+1. Create a new project in github
+```sh
+Example:
+    We would go to https://github.com/opsinfra?tab=repositories
+    Click on green button labeled "New"
+    Fill in "Repository name" filed with name for new service such as  "mysvc"
+    Click on green button labeled "Create repository"
+```
+
+2. Mirror this template into the new git repository
+```sh
+Example:
+    $ cd $GOPATH/src/go-rest-project-template
+    $ git push --mirror https://github.com/opsinfra/mysvc
+```
+
+3. Clone the new git repository
+```sh
+Example:
+    $ cd $GOPATH/src
+    $ git clone https://github.com/opsinfra/mysvc
+```
+
+4. Replace name go-rest-project-template with new service name
+```sh
+Example:
+    $ cd $GOPATH/src/mysvc
+    $ sed -i '' 's/go-rest-project-template/mysvc/g' main.go  # On Linux, this line would be sed -i main.go 's/go-rest-project-template/mysvc/g'
+```
+
+5. Verify new git checkout
+```sh
+Example:
+    $ cd $GOPATH/src/mysvc
+    $ make run
+```
+
+
 ## Reference
 
 1. Sample controllers -> https://github.com/swaggo/swag/tree/master/example/celler/controller

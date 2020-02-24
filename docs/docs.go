@@ -58,6 +58,11 @@ var doc = `{
                     "format": "string",
                     "example": "e669585-20200218215640"
                 },
+                "servicename": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "mysvc"
+                },
                 "version": {
                     "type": "string",
                     "format": "string",
