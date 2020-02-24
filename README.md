@@ -104,7 +104,7 @@ Example:
     $ sed -i '' 's/go-rest-project-template/mysvc/g' main.go  # On Linux, this line would be sed -i main.go 's/go-rest-project-template/mysvc/g'
 ```
 
-5. Verify new git checkout
+5. Verify that new service works
 ```sh
 Example:
     $ cd $GOPATH/src/mysvc
