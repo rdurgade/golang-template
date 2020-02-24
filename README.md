@@ -79,7 +79,7 @@ $ make help #shows help
 Example:
     We would go to https://github.com/opsinfra?tab=repositories
     Click on green button labeled "New"
-    Fill in "Repository name" filed with name for new service such as  "mysvc"
+    Fill in "Repository name" with name for new service such as  "mysvc"
     Click on green button labeled "Create repository"
 ```
 
