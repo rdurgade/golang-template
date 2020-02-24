@@ -9,6 +9,7 @@ Goal is to create a reusable code template for golang based REST API projects.
 
 ## Contents
  - [Getting started](#getting-started)
+ - [How to use this template for a new project](#How-to-use-this-template-for-a-new-project)
  - [Reference](#Reference)
  - [Thanks to](#thanks-to)
 
