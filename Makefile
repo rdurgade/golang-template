@@ -1,5 +1,7 @@
 
-## Please feel free to modify following make variables
+# ---------------------------------------------------
+# Please feel free to modify following make variables
+# ---------------------------------------------------
 # BASEPATH: define prefix for all API paths. Can be changed to somthing like /mysvc/api
 BASEPATH = "/api" #Please do not end with /
 
@@ -16,7 +18,9 @@ VERSION := "v0.0.1"
 SERVICENAME := $(shell basename "$(PWD)")
 
 ##
+# ---------------------------------------------
 # Please do not modify following make variables
+# ---------------------------------------------
 BUILD := $(shell git rev-parse --short HEAD)-$(shell date +%Y%m%d%H%M%S)
 PROJECTNAME := $(shell basename "$(PWD)")
 MAKE := $(shell which make)
