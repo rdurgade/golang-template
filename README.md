@@ -98,11 +98,11 @@ Example:
     $ git clone https://github.com/opsinfra/mysvc
 ```
 
-4. Replace name go-rest-project-template with new service name
+4. Replace name go-rest-project-template with new project name
 ```sh
 Example:
     $ cd $GOPATH/src/mysvc
-    $ sed -i '' 's/go-rest-project-template/mysvc/g' main.go  # On Linux, this line would be sed -i main.go 's/go-rest-project-template/mysvc/g'
+    $ sed -i '' "s/go-rest-project-template/${PWD##*/}/g" main.go  # On Linux, this line would be sed -i main.go "s/go-rest-project-template/${PWD##*/}/g"
 ```
 
 5. Important note
