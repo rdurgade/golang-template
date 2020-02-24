@@ -105,12 +105,10 @@ Example:
     $ sed -i '' 's/go-rest-project-template/mysvc/g' main.go  # On Linux, this line would be sed -i main.go 's/go-rest-project-template/mysvc/g'
 ```
 
-5. Verify that new service works
-```sh
-Example:
-    $ cd $GOPATH/src/mysvc
-    $ make run
-```
+5. Important note
+- Most likely, as we build project, more go packages will be imported. So we need to run **make dep** before make run so that those imported packages can be cached in vendor folder.  
+ 
+
 
 
 ## Reference
