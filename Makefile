@@ -28,6 +28,7 @@ prechecks:
 	@[ `go version | grep version | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang is installed"; } || { echo "[ FAILED ] Golang is not installed. Refer to installation instructions here -> https://golang.org/dl/ "; }
 
 
+## dep: Cache imported packages in vendor directory
 dep:
 	@echo "[ > ] Checking if dep is installed"
 	@[ `$$GOBIN/dep version | grep platform | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang dep is installed"; } || { echo "[ FAILED ] Golang dep is not installed"; echo "[ TRY ] Attempting to install Golang dep tool"; set -x; go get -v -u  github.com/golang/dep/cmd/dep;  set +x;sync; [ `$$GOBIN/dep version | grep platform | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang dep is installed"; }; }
