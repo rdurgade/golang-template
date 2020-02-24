@@ -17,7 +17,7 @@ Goal is to create a reusable code template for golang based REST API projects.
 
 Following instructions are tested on MacOS 10.13.6 High Sierra
 
-1. Install Xcode **OR** **Command Line Tools for Xcode**, for example search for keyword "Xcode 10.1" here -> https://developer.apple.com/download/more/
+1. Install Xcode *or* **Command Line Tools for Xcode**, for example search for keyword "Xcode 10.1" here -> https://developer.apple.com/download/more/
 
 2. Install golang -> https://golang.org/dl/
 
