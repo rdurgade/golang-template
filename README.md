@@ -98,7 +98,7 @@ Example:
     $ git clone https://github.com/opsinfra/mysvc
 ```
 
-4. Replace name go-rest-project-template with new project name
+4. Replace name go-rest-project-template in main.go with new project name
 ```sh
 Example:
     $ cd $GOPATH/src/mysvc
