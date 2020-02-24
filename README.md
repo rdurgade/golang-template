@@ -106,7 +106,7 @@ Example:
 ```
 
 5. Important note
-- Most likely, as we build project, more go packages will be imported. So we need to run **make dep** before make run so that those imported packages can be cached in vendor folder.  
+- Most likely, as we build project, more go packages will be imported. Whenever that happens, we need to run **make dep** before *make run* so that those imported packages can be cached in vendor folder.  
  
 
 
