@@ -1,4 +1,4 @@
-# go-rest-project-template
+# Golang based REST Project Template
 
 [![Build Status](https://travis-ci.org/gin-gonic/gin.svg)](https://travis-ci.com/opsinfra/go-rest-project-template)
 
