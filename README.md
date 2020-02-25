@@ -112,7 +112,7 @@ Example:
     $ make run
 ```
 
-6. Important note
+6. **Important note**
 - Most likely, as we build project, more go packages will be imported. Whenever that happens, we need to run **make dep** before *make run* so that those imported packages can be cached in vendor folder.  
  
 
