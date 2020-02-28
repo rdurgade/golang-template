@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/gin-gonic/gin.svg)](https://travis-ci.com/opsinfra/go-rest-project-template)
 
 
-This is a sample REST API service created using go, gin and swag.
+This is a simple REST API service created using go, gin and swag.
 The Makefile has many useful targets to quickly run/build this project.
 Goal is to create a reusable code template for golang based REST API projects.
 
@@ -73,7 +73,7 @@ $ make help #shows help
 ```
 
 ## How to use this template for a new project
-- **Prerequisite**: Completed setup as documented in section [Getting started](#getting-started)
+- **Prerequisite**: Complete setup as documented in section [Getting started](#getting-started)
 
 1. Create a new project in github
 ```sh
