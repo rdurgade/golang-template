@@ -1,7 +1,11 @@
 kind: pipeline
 name: default
 steps:
-- name: frontend
-  image: node
+- name: go-build
+  image: golang
   commands:
-  - hostname
+  - make buildgo
+
+trigger:
+  branch:
+  - master
