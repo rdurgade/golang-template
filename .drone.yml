@@ -5,4 +5,3 @@ steps:
   image: node
   commands:
   - hostname
-  - npm run test:unit
