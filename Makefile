@@ -15,14 +15,13 @@ PORT = "8080"
 VERSION := "v0.0.1"
 
 # SERVICENAME: Name for this REST API service. It will appear in version endpoint
-SERVICENAME := $(shell basename "$(PWD)")
+SERVICENAME := $(shell git remote show origin  | grep .git$$ | awk -F/ '{print $$NF}' | sed 's/.git//' | sort | uniq)
 
 ##
 # ---------------------------------------------
 # Please do not modify following make variables
 # ---------------------------------------------
 BUILD := $(shell git rev-parse --short HEAD)-$(shell date +%Y%m%d%H%M%S)
-PROJECTNAME := $(shell basename "$(PWD)")
 MAKE := $(shell which make)
 
 LDFLAGS=-ldflags "-X=main.Version=$(VERSION) -X=main.Build=$(BUILD) -X=main.BasePath=$(BASEPATH) -X=main.Port=$(PORT) -X=main.ServiceName=$(SERVICENAME) -X=main.SwaggerPath=$(SWAGGERPATH)"
@@ -34,17 +33,15 @@ prechecks:
 
 ## make dep: Cache imported packages in vendor directory
 dep:
-	@echo "[ > ] Checking if dep is installed"
-	@[ `$$GOBIN/dep version | grep platform | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang dep is installed"; } || { echo "[ FAILED ] Golang dep is not installed"; echo "[ TRY ] Attempting to install Golang dep tool"; set -x; go get -v -u  github.com/golang/dep/cmd/dep;  set +x;sync; [ `$$GOBIN/dep version | grep platform | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang dep is installed"; }; }
 	@echo "[ > ] Updating dependencies"
-	@set -x; [ -f Gopkg.toml ] ||  $$GOBIN/dep init -v
-	@set -x; $$GOBIN/dep ensure -v
+	@set -x; [ -f go.mod ] && [ -f go.sum ] ||  go dep init
+	@set -x; go dep vendor
 
 swag:
 	@echo "[ > ] Checking if swag is installed"
-	@[ `$$GOBIN/swag -v | grep  version| wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang swag is installed"; } || { echo "[ FAILED ] Golang swag is not installed"; echo "[ TRY ] Attempting to install Golang swag tool"; set -x; cd $$GOPATH;go get -v -u github.com/swaggo/swag/cmd/swag;  set +x;sync; [ `$$GOBIN/swag -v | grep  version | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang swag is installed"; }; }
+	@[ `$$GOPATH/bin/swag -v | grep  version| wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang swag is installed"; } || { echo "[ FAILED ] Golang swag is not installed"; echo "[ TRY ] Attempting to install Golang swag tool"; set -x; cd $$GOPATH;go get -v -u github.com/swaggo/swag/cmd/swag;  set +x;sync; [ `$$GOPATH/bin/swag -v | grep  version | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang swag is installed"; }; }
 	@echo "[ > ] Updating swagger docs"
-	@$$GOBIN/swag init
+	@$$GOPATH/bin/swag init
 
 ## make run: Runs this project locally
 run: swag
@@ -53,28 +50,28 @@ run: swag
 
 clean:
 	@echo "[ > ] Cleaning build output dir"
-	@sync;[ -f  build/out/${PROJECTNAME}  ] && { rm -f build/out/${PROJECTNAME}; echo "[ INFO ] DONE cleaning build/out"; } || { echo "[ INFO ] DONE cleaning build/out";}
+	@sync;[ -f  build/out/${SERVICENAME}  ] && { rm -f build/out/${SERVICENAME}; echo "[ INFO ] DONE cleaning build/out"; } || { echo "[ INFO ] DONE cleaning build/out";}
 	@echo "[ > ] Cleaning docker build dir"
-	@sync;[ -f  build/docker/app/${PROJECTNAME}  ] && { rm -f build/docker/app/${PROJECTNAME}; echo "[ INFO ] DONE cleaning build/docker/app"; } || { echo "[ INFO ] DONE cleaning build/docker/app";}
+	@sync;[ -f  build/docker/app/${SERVICENAME}  ] && { rm -f build/docker/app/${SERVICENAME}; echo "[ INFO ] DONE cleaning build/docker/app"; } || { echo "[ INFO ] DONE cleaning build/docker/app";}
 
 
 ## make buildgo: Builds go image
 buildgo: clean swag
 	@echo "[ > ] Building go code"
-	@set -x; go build $(LDFLAGS) -o build/out/${PROJECTNAME} main.go
-	@set -x; ls -al build/out/${PROJECTNAME};
+	@set -x; go build $(LDFLAGS) -o build/out/${SERVICENAME} main.go
+	@set -x; ls -al build/out/${SERVICENAME};
 
 buildlinuxbin: clean swag
 	@echo "[ > ] Building go code"
-	@set -x; GOOS=linux GOARCH=amd64  go build $(LDFLAGS) -o build/out/${PROJECTNAME} main.go
-	@set -x; ls -al build/out/${PROJECTNAME};
+	@set -x; GOOS=linux GOARCH=amd64  go build $(LDFLAGS) -o build/out/${SERVICENAME} main.go
+	@set -x; ls -al build/out/${SERVICENAME};
 
 ## make builddocker: Builds docker images
 builddocker: buildlinuxbin
 	@echo "[ > ] Building docker image"
-	@sync;set -x;cp build/out/${PROJECTNAME} build/docker/app/${PROJECTNAME}
-	@set -x; ls -al build/docker/app/${PROJECTNAME}
-	@sync;set -x; cd build/docker; docker build -t ${PROJECTNAME}:$(VERSION)-${BUILD} --build-arg BINNAME=${PROJECTNAME} .;
+	@sync;set -x;cp build/out/${SERVICENAME} build/docker/app/${SERVICENAME}
+	@set -x; ls -al build/docker/app/${SERVICENAME}
+	@sync;set -x; cd build/docker; docker build -t ${SERVICENAME}:$(VERSION)-${BUILD} --build-arg BINNAME=${SERVICENAME} .;
 	@$(MAKE) clean
 
 :
@@ -82,7 +79,7 @@ builddocker: buildlinuxbin
 all: help
 help: Makefile
 	@echo
-	@echo " Choose a command run in "$(PROJECTNAME)":"
+	@echo " Choose a command run in "$(SERVICENAME)":"
 	@echo
 	@sed -n 's/^##//p' $< | column -t -s ':' |  sed -e 's/^/ /'
 	@echo
