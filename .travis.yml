@@ -3,9 +3,8 @@ go:
 - "1.15"
 
 env:
-  global:
-    - GOBIN=/tmp
-    - PATH=${GOBIN}:${PATH}
+  - GOBIN=/tmp
+  - PATH=${GOBIN}:${PATH}
 
 git:
   depth: 1
