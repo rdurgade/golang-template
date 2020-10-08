@@ -3,8 +3,6 @@ language: go
 env:
   global:
     - GO111MODULE=auto
-    - GOBIN=/tmp
-    - PATH=${GOBIN}:${PATH}
 
 git:
   depth: 1
@@ -15,5 +13,4 @@ notifications:
   email: false
 
 script:
-  - mkdir /tmp/src; ln -s ${PWD} /tmp/src
-  - GOPATH=/tmp; cd ${GOPATH}/src/${PWD##*/}; make buildgo
+  - make buildgo
