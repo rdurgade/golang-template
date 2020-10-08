@@ -2,7 +2,8 @@ language: go
 
 env:
   global:
-    - GO111MODULE=auto
+    - GOBIN=/tmp
+    - PATH=${GOBIN}:${PATH}
 
 git:
   depth: 1
