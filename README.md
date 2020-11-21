@@ -1,7 +1,5 @@
 # Golang based REST API Project Template
 
-[![Build Status](https://travis-ci.org/gin-gonic/gin.svg)](https://travis-ci.com/opsinfra/go-rest-project-template)
-
 
 This is a simple REST API service created using go, gin and swag.
 The Makefile has many useful targets to quickly run/build this project.
