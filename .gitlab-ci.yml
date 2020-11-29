@@ -14,11 +14,11 @@ variables:
     - cd $GO_PROJECT_PATH
 
 stages:
-  - build
+  - go_build
 
 go_build:
   <<: *prep_go
-  stage: build
+  stage: go_build
   image: golang:1.14
   script:
     - mkdir buildgo
