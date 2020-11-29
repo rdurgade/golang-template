@@ -1,13 +1,24 @@
-image: golang:1.14
+image: quay.io/lifechurch/k8s-deploy-helper:3.0.0
 
 variables:
   GOBIN: "/tmp"
   PATH: $GOBIN:$PATH
 
-stages:
-  - build
+.prep_go: &prep_go
+  before_script:
+    - export GL_URL=$(echo $CI_PROJECT_URL | awk -F/ '{print $3}')
+    - export GO_PROJECT_PATH="$GOPATH/src/$GL_URL/$CI_PROJECT_NAMESPACE"
+    - mkdir -p $GO_PROJECT_PATH
+    - ln -s $(pwd) $GO_PROJECT_PATH
+    - export GO_PROJECT_PATH="$GO_PROJECT_PATH/$CI_PROJECT_NAME"
+    - cd $GO_PROJECT_PATH
 
-build:
+stages:
+  - go_build
+
+go_build:
+  <<: *prep_go
   stage: build
+  image: golang:1.14
   script:
-    - make buildgo
+    - mkdir buildgo
