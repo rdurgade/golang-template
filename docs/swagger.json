@@ -3,8 +3,7 @@
     "info": {
         "description": "This is a go-rest-project-template API server.",
         "title": "API Docs",
-        "contact": {},
-        "license": {}
+        "contact": {}
     },
     "paths": {
         "/version": {
