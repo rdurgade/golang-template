@@ -14,7 +14,7 @@ variables:
     - cd $GO_PROJECT_PATH
 
 stages:
-  - go_build
+  - build
 
 go_build:
   <<: *prep_go
