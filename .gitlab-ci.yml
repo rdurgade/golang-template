@@ -1,14 +1,11 @@
-image: quay.io/lifechurch/k8s-deploy-helper:3.0.0
-
-variables:
-  GOBIN: "/tmp"
-  PATH: $GOBIN:$PATH
+image: golang:1.14
 
 stages:
-  - go_build
+  - build
 
 build:
-  stage: go_build
-  image: golang:1.14
+  stage: build
   script:
-    - mkdir buildgo
+    - export GOBIN="/tmp"
+    - export PATH=$PATH:$GOBIN 
+    - make buildgo
