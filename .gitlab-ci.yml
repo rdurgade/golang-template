@@ -6,6 +6,4 @@ stages:
 build:
   stage: build
   script:
-    - export GOBIN="/tmp"
-    - export PATH=$PATH:$GOBIN 
-    - make buildgo
+    - GOBIN="/tmp" PATH=$PATH:$GOBIN  make buildgo
