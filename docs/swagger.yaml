@@ -17,7 +17,6 @@ definitions:
 info:
   contact: {}
   description: This is a go-rest-project-template API server.
-  license: {}
   title: API Docs
 paths:
   /version:
