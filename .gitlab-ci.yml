@@ -1,13 +1,11 @@
 # Default Image
-image: golang:1.14
+image: golang:1.18
 
 stages:
   - build
 
 go_build:
   stage: build
-  image: golang:1.14
+  image: golang:1.18
   script:
-    - go get github.com/swaggo/swag/cmd/swag
-    - go mod vendor
     - make buildgo
