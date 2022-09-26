@@ -76,9 +76,8 @@ builddocker: buildlinuxbin
 	@set -x; ls -al build/docker/app/${SERVICENAME}
 	@sync;set -x; cd build/docker; docker build -t ${SERVICENAME}:$(VERSION)-${BUILD} -t 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD} --build-arg BINNAME=${SERVICENAME} .;
 	@sync;set -x; cd build/docker; docker push 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD};
-
+	@sync;set -x; cd build/out; echo -e "kustomize:\n  images:\n  - 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD}>.argocd-source-app1.yaml;cat .argocd-source-app1.yaml
 	@$(MAKE) clean
-
 :
 .PHONY: help
 all: help

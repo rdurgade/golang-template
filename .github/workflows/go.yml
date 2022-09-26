@@ -21,3 +21,15 @@ jobs:
     - name: Build
       run: make builddocker
 
+    - name: Pushes test file
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'build/out/.argocd-source-app1.yaml'
+        destination_repo: 'rdurgade/argocd-config'
+        destination_folder: 'dev/applications/app1'
+        user_email: 'ratika_durgade@yahoo.com'
+        user_name: 'opsinfra'
+        commit_message: 'Updating k8s spec'
+
