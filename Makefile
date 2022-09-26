@@ -61,7 +61,7 @@ clean:
 ## make buildgo: Builds go image
 buildgo: swag
 	@echo "[ > ] Building go code"
-	@set -x; go build $(LDFLAGS) -o build/out/${SERVICENAME} main.go
+	@set -x; mkdir -p build/out; go build $(LDFLAGS) -o build/out/${SERVICENAME} main.go
 	@set -x; ls -al build/out/${SERVICENAME};
 
 buildlinuxbin: clean swag
