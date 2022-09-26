@@ -74,7 +74,9 @@ builddocker: buildlinuxbin
 	@echo "[ > ] Building docker image"
 	@sync;set -x;cp build/out/${SERVICENAME} build/docker/app/${SERVICENAME}
 	@set -x; ls -al build/docker/app/${SERVICENAME}
-	@sync;set -x; cd build/docker; docker build -t ${SERVICENAME}:$(VERSION)-${BUILD} --build-arg BINNAME=${SERVICENAME} .;
+	@sync;set -x; cd build/docker; docker build -t ${SERVICENAME}:$(VERSION)-${BUILD} -t 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD} --build-arg BINNAME=${SERVICENAME} .;
+	@sync;set -x; cd build/docker; docker push 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD};
+
 	@$(MAKE) clean
 
 :
