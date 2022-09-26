@@ -40,11 +40,11 @@ dep:
 swag:
 	@echo "[ > ] Checking if swag is installed"
 	@echo "Gopath is $$GOPATH"
-	@set -x; ls -al $$GOPATH
-	@[ `$$GOPATH/bin/swag -v | grep  version| wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang swag is installed"; } || { echo "[ FAILED ] Golang swag is not installed"; echo "[ TRY ] Attempting to install Golang swag tool"; set -x; cd $$GOPATH;go install -v  github.com/swaggo/swag/cmd/swag@v1.7.0;  set +x;sync; [ `$$GOPATH/bin/swag -v | grep  version | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang swag is installed"; }; }
-	@echo "[ > ] Updating swagger docs"
-	@set -x; ls -al $$GOPATH
-	@$$GOPATH/bin/swag init
+	# @set -x; ls -al $$GOPATH
+	# @[ `$$GOPATH/bin/swag -v | grep  version| wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang swag is installed"; } || { echo "[ FAILED ] Golang swag is not installed"; echo "[ TRY ] Attempting to install Golang swag tool"; set -x; cd $$GOPATH;go install -v  github.com/swaggo/swag/cmd/swag@v1.7.0;  set +x;sync; [ `$$GOPATH/bin/swag -v | grep  version | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang swag is installed"; }; }
+	# @echo "[ > ] Updating swagger docs"
+	# @set -x; ls -al $$GOPATH
+	# @$$GOPATH/bin/swag init
 
 ## make run: Runs this project locally
 run: swag
