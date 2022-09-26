@@ -15,7 +15,7 @@ PORT = "8080"
 VERSION := "v0.0.1"
 
 # SERVICENAME: Name for this REST API service. It will appear in version endpoint
-SERVICENAME := $(shell git remote show origin  | grep .git$$ | awk -F/ '{print $$NF}' | sed 's/.git//' | sort | uniq)
+SERVICENAME := $(shell git remote show origin  | grep Fetch | awk -F/ '{print $$NF}' | sed 's/.git//' | sort | uniq)
 
 ##
 # ---------------------------------------------
