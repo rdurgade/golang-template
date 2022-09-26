@@ -34,14 +34,14 @@ prechecks:
 ## make dep: Cache imported packages in vendor directory
 dep:
 	@echo "[ > ] Updating dependencies"
-	@set -x; [ -f go.mod ] && [ -f go.sum ] ||  go dep init
-	@set -x; go dep vendor
+	@set -x; [ -f go.mod ] && [ -f go.sum ] ||  go mod init
+	@set -x; go mod vendor
 
 swag:
 	@echo "[ > ] Checking if swag is installed"
 	@echo "Gopath is $$GOPATH"
 	@set -x; ls -al $$GOPATH
-	@[ `$$GOPATH/bin/swag -v | grep  version| wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang swag is installed"; } || { echo "[ FAILED ] Golang swag is not installed"; echo "[ TRY ] Attempting to install Golang swag tool"; set -x; cd $$GOPATH;go get -v -u github.com/swaggo/swag/cmd/swag;  set +x;sync; [ `$$GOPATH/bin/swag -v | grep  version | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang swag is installed"; }; }
+	@[ `$$GOPATH/bin/swag -v | grep  version| wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang swag is installed"; } || { echo "[ FAILED ] Golang swag is not installed"; echo "[ TRY ] Attempting to install Golang swag tool"; set -x; cd $$GOPATH;go install -v  github.com/swaggo/swag/cmd/swag@v1.7.0;  set +x;sync; [ `$$GOPATH/bin/swag -v | grep  version | wc -l | awk '{print $1}'` -eq 1 ] && { echo "[ PASS ] Golang swag is installed"; }; }
 	@echo "[ > ] Updating swagger docs"
 	@set -x; ls -al $$GOPATH
 	@$$GOPATH/bin/swag init
