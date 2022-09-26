@@ -29,7 +29,7 @@ jobs:
         source_file: 'build/out/.argocd-source-app1.yaml'
         destination_repo: 'rdurgade/argocd-config'
         destination_folder: 'dev/applications/app1'
-        user_email: 'ratika_durgade@yahoo.com'
+        user_email: '61214468+opsinfra@users.noreply.github.com'
         user_name: 'opsinfra'
         commit_message: 'Updating k8s spec'
 
