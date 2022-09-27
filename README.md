@@ -1,7 +1,5 @@
 # Golang based REST API Project Template
 
-[![Gitlab CI Build Status](https://gitlab.com/opsinfra/${{values.component_id}}/badges/master/pipeline.svg)](https://gitlab.com/opsinfra/${{values.component_id}}/-/commits/master)
-
 This is a simple REST API service created using go, gin and swag.
 The Makefile has many useful targets to quickly run/build this project.
 Goal is to create a reusable code template for golang based REST API projects.
