@@ -74,9 +74,9 @@ builddocker: buildlinuxbin
 	@echo "[ > ] Building docker image"
 	@sync;set -x;cp build/out/${SERVICENAME} build/docker/app/${SERVICENAME}
 	@set -x; ls -al build/docker/app/${SERVICENAME}
-	@sync;set -x; cd build/docker; docker build -t ${SERVICENAME}:$(VERSION)-${BUILD} -t 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD} --build-arg BINNAME=${SERVICENAME} .;
+	@sync;set -x; cd build/docker; docker build  --build-arg BINNAME=${SERVICENAME}  -t ${SERVICENAME}:$(VERSION)-${BUILD} -t 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD} .;
 	@sync;set -x; cd build/docker; docker push 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD};
-	@sync;set -x; cd build/out; echo -e "kustomize:\n  images:\n  - 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD}">.argocd-source-app1.yaml;cat .argocd-source-app1.yaml
+	@sync;set -x; cd build/out; sed  "s/replace_this/$(VERSION)-${BUILD}/g" Kustomization.template > Kustomization;cat Kustomization
 	@$(MAKE) clean
 	@sync;set -x; echo $${API_TOKEN_GITHUB}
 :
