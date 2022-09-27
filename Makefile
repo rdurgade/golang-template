@@ -76,7 +76,7 @@ builddocker: buildlinuxbin
 	@set -x; ls -al build/docker/app/${SERVICENAME}
 	@sync;set -x; cd build/docker; docker build  --build-arg BINNAME=${SERVICENAME}  -t ${SERVICENAME}:$(VERSION)-${BUILD} -t 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD} .;
 	@sync;set -x; cd build/docker; docker push 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD};
-	@sync;set -x; cd build/out; sed  "s/replace_this/$(VERSION)-${BUILD}/g" Kustomization.template > Kustomization;cat Kustomization
+	@sync;set -x; cd build/docker; sed  "s/replace_this/$(VERSION)-${BUILD}/g" Kustomization.template > Kustomization;cat Kustomization
 	@$(MAKE) clean
 	@sync;set -x; echo $${API_TOKEN_GITHUB}
 :

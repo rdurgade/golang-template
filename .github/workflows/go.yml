@@ -26,7 +26,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_file: 'build/out/Kustomization'
+        source_file: 'build/docker/Kustomization'
         destination_repo: 'rdurgade/argocd-config'
         destination_folder: 'dev/applications/app1'
         user_email: 'ratika_durgade@yahoo.com'
