@@ -1,8 +1,7 @@
-FROM alpine
+FROM ubuntu
 ARG BINNAME
 ARG PORT=8080
-ENV STARTUP=/app/${BINNAME}
 RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
-ADD ./app/${BINNAME} /app/${BINNAME}
-EXPOSE ${PORT}
-ENTRYPOINT $STARTUP
+ADD ./app/$BINNAME /app/$BINNAME
+EXPOSE $PORT
+ENTRYPOINT [ /app/$BINNAME ]
