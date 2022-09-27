@@ -1,0 +1,34 @@
+name: Go
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+    runs-on: [self-hosted, golang-x64]
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
+
+    - name: Build
+      run: make builddocker
+
+    - name: Pushes test file
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'build/docker/Kustomization'
+        destination_repo: 'rdurgade/argocd-config'
+        destination_folder: 'dev/applications/app1'
+        user_email: 'ratika_durgade@yahoo.com'
+        user_name: 'Ratika Durgade'
+        commit_message: 'Updating kube spec'
