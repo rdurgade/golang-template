@@ -64,7 +64,7 @@ buildgo: swag
 	@set -x; mkdir -p build/out; go build $(LDFLAGS) -o build/out/${SERVICENAME} main.go
 	@set -x; ls -al build/out/${SERVICENAME};
 
-buildlinuxbin: clean swag
+buildlinuxbin: dep
 	@echo "[ > ] Building go code"
 	@set -x; GOOS=linux GOARCH=amd64  go build $(LDFLAGS) -o build/out/${SERVICENAME} main.go
 	@set -x; ls -al build/out/${SERVICENAME};
