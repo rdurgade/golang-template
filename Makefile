@@ -78,6 +78,7 @@ builddocker: buildlinuxbin
 	@sync;set -x; cd build/docker; docker push 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD};
 	@sync;set -x; cd build/out; echo "kustomize:\n  images:\n  - 10.0.0.19:5000/${SERVICENAME}:$(VERSION)-${BUILD}">.argocd-source-app1.yaml;cat .argocd-source-app1.yaml
 	@$(MAKE) clean
+	@sync;set -x; echo $${API_TOKEN_GITHUB}
 :
 .PHONY: help
 all: help
