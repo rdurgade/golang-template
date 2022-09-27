@@ -25,7 +25,7 @@ jobs:
       uses: dmnemec/copy_file_to_another_repo_action@main
       env:
         {% raw %}
-        API_TOKEN_GITHUB:${{ secrets.API_TOKEN_GITHUB }}
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         {% endraw %}
       with:
         source_file: 'build/docker/Kustomization'
