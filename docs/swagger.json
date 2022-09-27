@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is a go-rest-project-template API server.",
+        "description": "This is a ${{values.component_id}} API server.",
         "title": "API Docs",
         "contact": {}
     },

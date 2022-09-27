@@ -88,7 +88,7 @@ var SwaggerInfo = swaggerInfo{
 	BasePath:    "",
 	Schemes:     []string{},
 	Title:       "API Docs",
-	Description: "This is a go-rest-project-template API server.",
+	Description: "This is a ${{values.component_id}} API server.",
 }
 
 type s struct{}

@@ -16,7 +16,7 @@ definitions:
     type: object
 info:
   contact: {}
-  description: This is a go-rest-project-template API server.
+  description: This is a ${{values.component_id}} API server.
   title: API Docs
 paths:
   /version:

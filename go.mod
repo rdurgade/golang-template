@@ -1,4 +1,4 @@
-module go-rest-project-template
+module ${{values.component_id}}
 
 go 1.18
 

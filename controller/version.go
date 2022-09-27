@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"go-rest-project-template/model"
+	"${{values.component_id}}/model"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

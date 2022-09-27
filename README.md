@@ -1,6 +1,6 @@
 # Golang based REST API Project Template
 
-[![Gitlab CI Build Status](https://gitlab.com/opsinfra/go-rest-project-template/badges/master/pipeline.svg)](https://gitlab.com/opsinfra/go-rest-project-template/-/commits/master)
+[![Gitlab CI Build Status](https://gitlab.com/opsinfra/${{values.component_id}}/badges/master/pipeline.svg)](https://gitlab.com/opsinfra/${{values.component_id}}/-/commits/master)
 
 This is a simple REST API service created using go, gin and swag.
 The Makefile has many useful targets to quickly run/build this project.
@@ -43,12 +43,12 @@ mkdir -p ~/Documents/projects/src
 7. Clone this project in $GOPATH/src directory
 ```sh
 $ cd $GOPATH/src
-$ git clone https://github.com/opsinfra/go-rest-project-template.git
+$ git clone https://github.com/opsinfra/${{values.component_id}}.git
 ```
 
 8. Run this project
 ```sh
-$ cd go-rest-project-template
+$ cd ${{values.component_id}}
 $ make run
 ```
 Then open http://localhost:8080/ in web browser ( Browser will automatically get routed to swagger documentation in 5 seconds )
@@ -59,13 +59,13 @@ $ curl -X GET "http://localhost:8080/api/version"
 
 9. View code in VSCode
 ```sh
-$ cd $GOPATH/src/go-rest-project-template
+$ cd $GOPATH/src/${{values.component_id}}
 $ code .  # This will open . ( i.e. current directory ) in VSCode application
 ```
 
 10. Other make commands
 ```sh
-$ cd go-rest-project-template
+$ cd ${{values.component_id}}
 $ make builddocker #complie go code with GOARCH=amd64 and GOOS=linux and create docker image
 $ make buildgo #build go binary in directory build/out
 $ make help #shows help
@@ -86,7 +86,7 @@ Example:
 2. Mirror this template into the new git repository
 ```sh
 Example:
-    $ cd $GOPATH/src/go-rest-project-template
+    $ cd $GOPATH/src/${{values.component_id}}
     $ git push --mirror https://github.com/opsinfra/mysvc
 ```
 
@@ -97,11 +97,11 @@ Example:
     $ git clone https://github.com/opsinfra/mysvc
 ```
 
-4. Replace name go-rest-project-template in main.go with new project name
+4. Replace name ${{values.component_id}} in main.go with new project name
 ```sh
 Example:
     $ cd $GOPATH/src/mysvc
-    $ sed -i '' "s/go-rest-project-template/${PWD##*/}/g" main.go  # On Linux, this line would be sed -i main.go "s/go-rest-project-template/${PWD##*/}/g"
+    $ sed -i '' "s/${{values.component_id}}/${PWD##*/}/g" main.go  # On Linux, this line would be sed -i main.go "s/${{values.component_id}}/${PWD##*/}/g"
 ```
 
 5. Now the application should start

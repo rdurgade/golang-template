@@ -1,8 +1,8 @@
 package main
 
 import (
-	"go-rest-project-template/controller"
-	"go-rest-project-template/docs"
+	"${{values.component_id}}/controller"
+	"${{values.component_id}}/docs"
 
 	"github.com/gin-gonic/gin"
 
@@ -65,7 +65,7 @@ func get404message(rPath, rMethod, redirectTo string) (rtrn string) {
 	rtrn = `<!DOCTYPE html>
     <html lang="en">
     <head>
-		<title>go-rest-project-template</title>
+		<title>${{values.component_id}}</title>
 		<script>
 		var i = 5;
 		var inv = setInterval(function() {
@@ -111,4 +111,4 @@ func get404message(rPath, rMethod, redirectTo string) (rtrn string) {
 }
 
 // @title API Docs
-// @description This is a go-rest-project-template API server.
+// @description This is a ${{values.component_id}} API server.
