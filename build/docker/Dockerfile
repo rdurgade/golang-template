@@ -1,7 +1,8 @@
-FROM ubuntu
+FROM alpine
 ARG BINNAME
 ARG PORT=8080
-RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
-ADD ./app/$BINNAME /app/$BINNAME
-EXPOSE $PORT
-ENTRYPOINT [ /app/$BINNAME ]
+ENV STARTUP=/app/${BINNAME}
+RUN apk update && apk add ca-certificates apk add libc6-compat && rm -rf /var/cache/apk/*
+ADD ./app/${BINNAME} /app/${BINNAME}
+EXPOSE ${PORT}
+ENTRYPOINT $STARTUP
