@@ -28,7 +28,7 @@ jobs:
       with:
         source_file: 'build/docker/Kustomization'
         destination_repo: 'rdurgade/argocd-config'
-        destination_folder: 'dev/applications/app1'
+        destination_folder: 'dev/applications/${{values.component_id}}'
         user_email: 'ratika_durgade@yahoo.com'
         user_name: 'Ratika Durgade'
         commit_message: 'Updating kube spec'
